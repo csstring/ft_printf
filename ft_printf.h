@@ -16,7 +16,7 @@
 # include <stdarg.h>
 
 int		ft_printf(const char *arg, ...);
-int		ft_type(va_list ap, char type);
+int		ft_type(va_list *ap, char type);
 int		ft_c(char c);
 int		ft_s(char *str);
 int		ft_p(void *p);

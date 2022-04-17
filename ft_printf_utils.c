@@ -20,6 +20,11 @@ int	ft_c(char c)
 
 int	ft_s(char *str)
 {
+	if (str == NULL)
+	{
+		ft_putstr_fd("(null)", 1);
+		return (ft_strlen("(null)"));
+	}
 	ft_putstr_fd(str, 1);
 	return (ft_strlen(str));
 }
@@ -33,7 +38,7 @@ int	ft_p(void *p)
 	addr = (size_t)p;
 	str = ft_u_convert_base(ft_uitoa(addr), "0123456789", "0123456789abcdef");
 	ft_putchar_fd('0', 1);
-	ft_putchar_fd('X', 1);
+	ft_putchar_fd('x', 1);
 	ft_putstr_fd(str, 1);
 	i = ft_strlen(str) + 2;
 	free(str);
@@ -60,7 +65,7 @@ int	ft_xu(unsigned int ud, char type)
 	if (type == 'x')
 		str = ft_u_convert_base(ft_uitoa(ud), "0123456789", "0123456789abcdef");
 	else if (type == 'X')
-		str = ft_u_convert_base(ft_uitoa(ud), "0123456789", "0123456789abcdef");
+		str = ft_u_convert_base(ft_uitoa(ud), "0123456789", "0123456789ABCDEF");
 	else
 		str = ft_uitoa(ud);
 	ft_putstr_fd(str, 1);
