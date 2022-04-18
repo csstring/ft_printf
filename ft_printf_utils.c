@@ -6,7 +6,7 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 17:37:21 by schoe             #+#    #+#             */
-/*   Updated: 2022/04/15 21:51:54 by schoe            ###   ########.fr       */
+/*   Updated: 2022/04/18 21:13:04 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -36,7 +36,9 @@ int	ft_p(void *p)
 	size_t	addr;
 
 	addr = (size_t)p;
-	str = ft_u_convert_base(ft_uitoa(addr), "0123456789", "0123456789abcdef");
+	str = ft_u_convert_base(ft_ultoa(addr), "0123456789", "0123456789abcdef");
+	if (str == NULL)
+		return (-1);
 	ft_putchar_fd('0', 1);
 	ft_putchar_fd('x', 1);
 	ft_putstr_fd(str, 1);
@@ -51,6 +53,8 @@ int	ft_di(int d)
 	int		i;
 
 	str = ft_itoa(d);
+	if (str == NULL)
+		return (-1);
 	ft_putstr_fd(str, 1);
 	i = ft_strlen(str);
 	free(str);
@@ -63,11 +67,13 @@ int	ft_xu(unsigned int ud, char type)
 	int		i;
 
 	if (type == 'x')
-		str = ft_u_convert_base(ft_uitoa(ud), "0123456789", "0123456789abcdef");
+		str = ft_u_convert_base(ft_ultoa(ud), "0123456789", "0123456789abcdef");
 	else if (type == 'X')
-		str = ft_u_convert_base(ft_uitoa(ud), "0123456789", "0123456789ABCDEF");
+		str = ft_u_convert_base(ft_ultoa(ud), "0123456789", "0123456789ABCDEF");
 	else
-		str = ft_uitoa(ud);
+		str = ft_ultoa(ud);
+	if (str == NULL)
+		return (-1);
 	ft_putstr_fd(str, 1);
 	i = ft_strlen(str);
 	free(str);

@@ -6,11 +6,10 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 18:06:45 by schoe             #+#    #+#             */
-/*   Updated: 2022/04/15 21:37:57 by schoe            ###   ########.fr       */
+/*   Updated: 2022/04/18 21:13:02 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "ft_printf.h"
 
 static int	check(char *base)

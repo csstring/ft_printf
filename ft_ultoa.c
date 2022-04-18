@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_uitoa.c                                         :+:      :+:    :+:   */
+/*   ft_ultoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 18:01:30 by schoe             #+#    #+#             */
-/*   Updated: 2022/04/15 21:36:33 by schoe            ###   ########.fr       */
+/*   Created: 2022/04/18 21:15:20 by schoe             #+#    #+#             */
+/*   Updated: 2022/04/18 21:15:27 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -38,7 +38,7 @@ static void	ft_write(char *arr, size_t size, size_t nb)
 	}
 }
 
-char	*ft_uitoa(size_t n)
+char	*ft_ultoa(size_t n)
 {
 	char	*arr;
 	size_t	size;

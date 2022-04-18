@@ -6,7 +6,7 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 14:20:05 by schoe             #+#    #+#             */
-/*   Updated: 2022/04/15 21:52:16 by schoe            ###   ########.fr       */
+/*   Updated: 2022/04/18 21:32:59 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,31 +31,33 @@ int	ft_type(va_list *ap, char type)
 		return (1);
 	}
 	else
-		return (0);
+		return (-1);
 }
 
 int	ft_printf(const char *arg, ...)
 {
 	va_list	ap;
-	size_t	i;
 	int		count;
+	int		check;
 
 	count = 0;
-	i = 0;
 	va_start(ap, arg);
-	while (arg[i] != '\0')
+	while (*arg != '\0')
 	{
-		if (arg[i] == '%')
+		if (*arg == '%')
 		{
-			i++;
-			count += ft_type(&ap, arg[i]);
+			arg++;
+			check = ft_type(&ap, *arg);
+			if (check == -1)
+				return (-1);
+			count += check;
 		}
 		else
 		{
-			ft_putchar_fd(arg[i], 1);
+			ft_putchar_fd(*arg, 1);
 			count++;
 		}
-		i++;
+		arg++;
 	}
 	va_end(ap);
 	return (count);
