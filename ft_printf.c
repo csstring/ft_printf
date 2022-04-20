@@ -6,11 +6,11 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 14:20:05 by schoe             #+#    #+#             */
-/*   Updated: 2022/04/18 21:32:59 by schoe            ###   ########.fr       */
+/*   Updated: 2022/04/20 13:13:31 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 #include "ft_printf.h"
 
 int	ft_type(va_list *ap, char type)
@@ -26,10 +26,7 @@ int	ft_type(va_list *ap, char type)
 	else if (type == 'x' || type == 'X' || type == 'u')
 		return (ft_xu(va_arg(*ap, int), type));
 	else if (type == '%')
-	{
-		ft_putchar_fd(type, 1);
-		return (1);
-	}
+		return (write(1, &type, 1));
 	else
 		return (-1);
 }
@@ -40,6 +37,7 @@ int	ft_printf(const char *arg, ...)
 	int		count;
 	int		check;
 
+	check = 0;
 	count = 0;
 	va_start(ap, arg);
 	while (*arg != '\0')
@@ -49,16 +47,15 @@ int	ft_printf(const char *arg, ...)
 			arg++;
 			check = ft_type(&ap, *arg);
 			if (check == -1)
-				return (-1);
+				break ;
 			count += check;
 		}
 		else
-		{
-			ft_putchar_fd(*arg, 1);
-			count++;
-		}
+			count += write(1, arg, 1);
 		arg++;
 	}
 	va_end(ap);
+	if (check == -1)
+		return (-1);
 	return (count);
 }
